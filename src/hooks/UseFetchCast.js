@@ -11,7 +11,8 @@ export const useFetchCast = () => {
       // setIsLoading(true);
       try {
         const cast = await fetchMovieCast(movieId);
-        setCast([...cast]);
+        // setCast([...cast]);
+        setCast(cast);
       } catch (error) {
         console.error(error);
       } finally {

@@ -13,8 +13,8 @@ const CastPage = () => {
       {cast?.length === 0 && <p>Sorry, no additional information</p>}
       {cast && (
         <ul>
-          {cast.map(({ id, name, character, profile_path }) => (
-            <li key={id}>
+          {cast.map(({ cast_id, name, character, profile_path }) => (
+            <li key={cast_id}>
               {profile_path ? (
                 <img
                   src={posterPathStart + profile_path}

@@ -28,9 +28,7 @@ export const fetchMovieById = async movieId => {
       api_key: KEY,
     },
   });
-  //to do зробити
-  // const { title, poster_path, vote_average, overview, genres } = data;
-  // return { title, poster_path, vote_average, overview, genres };
+
   return data;
 };
 
@@ -42,4 +40,26 @@ export const fetchMovieCast = async movieId => {
   });
 
   return response.data.cast;
+};
+
+export const fetchMovieReviews = async movieId => {
+  const response = await tmdbAxiosApi.get(`movie/${movieId}/reviews`, {
+    params: {
+      api_key: KEY,
+    },
+  });
+  return response.data.results;
+};
+
+export const fetchMovieByQuery = async query => {
+  const { data } = await tmdbAxiosApi.get(`search/movie`, {
+    params: {
+      api_key: KEY,
+      page: 1,
+      include_adult: true,
+      query,
+    },
+  });
+
+  return data.results;
 };
