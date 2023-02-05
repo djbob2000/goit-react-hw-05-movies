@@ -15,10 +15,11 @@ const MovieDetailsPage = () => {
       {movie && (
         <section>
           <button
+            className={css.buttonBack}
             type="button"
             onClick={() => navigate(location?.state?.from ?? '/')}
           >
-            🔙Go back
+            ⬅️ Go back
           </button>
 
           <div className={css.MovieDetailsPageWrapper}>

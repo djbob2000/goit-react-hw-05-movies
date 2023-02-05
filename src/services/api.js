@@ -35,7 +35,7 @@ export const fetchMovieById = async movieId => {
 };
 
 export const fetchMovieCast = async movieId => {
-  const response = await tmdbAxiosApi.get(`movie/${movieId}/credits?`, {
+  const response = await tmdbAxiosApi.get(`movie/${movieId}/credits`, {
     params: {
       api_key: KEY,
     },

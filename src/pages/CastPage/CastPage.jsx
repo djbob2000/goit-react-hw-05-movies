@@ -1,41 +1,19 @@
-import { useState, useEffect } from 'react';
-import Loader from '../../components/Loader/Loader';
+// import { useState } from 'react';
+// import Loader from '../../components/Loader/Loader';
 import imageNotFound from './ImageNotFound.jpg';
-import { useParams } from 'react-router-dom';
-import { fetchMovieCast } from 'services/api';
+import { useFetchCast } from '../../hooks/UseFetchCast';
 
 const posterPathStart = 'https://image.tmdb.org/t/p/w500';
 
-const Cast = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [cast, setCast] = useState([]);
-  const { movieId } = useParams();
-
-  useEffect(() => {
-    const GetDataFromFetchMovieCast = async () => {
-      setIsLoading(true);
-      try {
-        const cast = await fetchMovieCast(movieId);
-        setCast([...cast]);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    GetDataFromFetchMovieCast();
-  }, [movieId]);
+const CastPage = () => {
+  const cast = useFetchCast();
 
   return (
     <>
-      <ul>
-        {isLoading ? (
-          <Loader />
-        ) : !cast.length ? (
-          <p>Sorry, no additional information</p>
-        ) : (
-          cast?.map(({ id, name, character, profile_path }) => (
+      {cast?.length === 0 && <p>Sorry, no additional information</p>}
+      {cast && (
+        <ul>
+          {cast.map(({ id, name, character, profile_path }) => (
             <li key={id}>
               {profile_path ? (
                 <img
@@ -46,15 +24,13 @@ const Cast = () => {
               ) : (
                 <img src={imageNotFound} alt="No poster" width={100} />
               )}
-
               <p>Name: {name}</p>
               <p>Character: {character}</p>
             </li>
-          ))
-        )}
-      </ul>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
-
-export default Cast;
+export default CastPage;
