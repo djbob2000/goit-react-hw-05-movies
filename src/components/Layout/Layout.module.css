@@ -1,0 +1,46 @@
+.header {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
+}
+.logo {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.container {
+  max-width: 1264px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.navlist {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navlistLink {
+  display: inline-block;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  color: #020930;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 250ms ease;
+}
+.navlistLink:hover,
+.navlistLink:focus {
+  text-decoration: underline;
+  color: rgb(1, 180, 228);
+}
+
+.navlistLink.active {
+  color: #f74f07;
+}
