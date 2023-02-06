@@ -72,7 +72,7 @@ const MoviesPage = () => {
       return;
     }
 
-    setMovies(null);
+    setMovies([]);
     setSearchParams({ query: value });
   };
 
